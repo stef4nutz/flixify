@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0A0A0C;
+  --foreground: #EBEBFF;
+  --brand: #FF3939;
+  --dark: #202029;
+  --light: #65657D;
+  --usernav: #131317;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-dark: var(--dark);
+  --color-light: var(--light);
+  --color-usernav: var(--usernav);
+  --color-red-custom: #F21C1C;
+  --color-yellow-custom: #F5DE50;
+  
+  --font-lato: "Lato", sans-serif;
+  --font-metropolis: "Metropolis", sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-lato);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark);
+  border-radius: 18px;
+  border: 4px solid var(--background);
+  transition: all 0.3s ease-in;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #30303a;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #ffffff, #a1a1aa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealRight {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes softScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-reveal-up {
+  opacity: 0;
+  animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-reveal-right {
+  opacity: 0;
+  animation: revealRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-soft-scale {
+  opacity: 0;
+  animation: softScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+
+@supports (animation-timeline: view()) {
+  .reveal-on-scroll {
+    animation: reveal-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+}
+
+@keyframes reveal-in {
+  0% { opacity: 0; transform: translateY(50px) scale(0.98); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-page-entrance {
+  animation: pageFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+
+@keyframes heroContentReveal {
+  0% { opacity: 0; transform: translateX(-40px); filter: blur(10px); }
+  100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+}
+
+.animate-hero-content {
+  animation: heroContentReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+}
